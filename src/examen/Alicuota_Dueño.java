@@ -10,9 +10,9 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
     ButtonGroup grupo = null;
 
     public Alicuota_Dueño() {
-        
+
         initComponents();
-        grupo=new ButtonGroup();
+        grupo = new ButtonGroup();
         grupo.add(rbtn_paga);
         grupo.add(rbtn_pendiente);
     }
@@ -36,6 +36,7 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txt_sexo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,7 +107,15 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 120, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 120, 30));
+
+        jButton2.setText("Reporte");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 130, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -135,32 +144,49 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_numero_depActionPerformed
 
-   
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Reporte r=new Reporte();
+        r.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void validar() {
+        if (txt_cedula.getText().equals("")
+                && txt_edad.getText().equals("")
+                && txt_numero_dep.getText().equals("")
+                && txt_nombre.equals("")) {
+
+        } else if (rbtn_paga.isSelected() == false && rbtn_pendiente.isSelected() == false) {
+
+        } else {
+
+        }
+
+    }
 
     public void ingresarDueño() {
-        
-        String estado="false";
-        
-        if(rbtn_paga.isSelected()){
-            estado="true";
+
+        String estado = "false";
+
+        if (rbtn_paga.isSelected()) {
+            estado = "true";
         }
-            
+
         String sql = "Insert into dueño (cedula,nombre,edad,sexo,n_departamento,estado)Values('" + txt_cedula.getText() + "','"
                 + txt_nombre.getText() + "'," + txt_edad.getText() + ",'" + txt_sexo.getText()
-                + "'," + txt_numero_dep.getText() + " ,'"+estado + "'); ";
+                + "'," + txt_numero_dep.getText() + " ,'" + estado + "'); ";
 
         ConexionPG con = new ConexionPG();
-         
 
         if (con.accion(sql)) {
             JOptionPane.showMessageDialog(null, "Dueño registrado");
-        } 
+        }
     }
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
