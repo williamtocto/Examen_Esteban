@@ -1,16 +1,17 @@
-
 package examen;
 
+import baseConexion.ConexionPG;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import modelo.Dueño;
-
 
 public class Alicuota_Dueño extends javax.swing.JFrame {
 
-   ButtonGroup grupo = null;
-   
+    ButtonGroup grupo = null;
+
     public Alicuota_Dueño() {
-        initComponents();      
+        initComponents();
+        grupo=new ButtonGroup();
         grupo.add(rbtn_paga);
         grupo.add(rbtn_pendiente);
     }
@@ -151,27 +152,38 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_nombreActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-     
+        ingresarDueño();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txt_numero_depActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_numero_depActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_numero_depActionPerformed
 
-    Dueño d=new Dueño();
- 
-    public void ingresarDueño(){
+    Dueño d = new Dueño();
 
-        String sql="Insert into alicuota Values("+txt_cedula.getText()+","
-                +txt_nombre+", "+txt_edad.getText()+","+txt_sexo.getText()
-                +","+txt_numero_dep.getText()+"true"+"); ";
+    public void ingresarDueño() {
+        
+        String estado="false";
+        
+        if(rbtn_paga.isSelected()){
+            estado="true";
+        }
+            
+        
+
+        String sql = "Insert into dueño (cedula,nombre,edad,sexo,n_departamento,estado)Values('" + txt_cedula.getText() + "','"
+                + txt_nombre.getText() + "'," + txt_edad.getText() + ",'" + txt_sexo.getText()
+                + "'," + txt_numero_dep.getText() + " ,'"+estado + "'); ";
+
+        ConexionPG con = new ConexionPG();
         
         
-        
-        
-  
+
+        if (con.accion(sql)) {
+            JOptionPane.showMessageDialog(null, "Dueño registrado");
+        } 
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
