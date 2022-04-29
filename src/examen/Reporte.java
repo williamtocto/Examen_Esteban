@@ -1,10 +1,6 @@
 
 package examen;
 
-/**
- *
- * @author willi
- */
 public class Reporte extends javax.swing.JFrame {
 
    
