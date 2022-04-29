@@ -35,10 +35,6 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txt_sexo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -109,28 +105,7 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 120, 30));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 430, 320));
-
-        jButton2.setText("jButton2");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 370, 110, 30));
-
-        jButton3.setText("jButton3");
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 100, 30));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 370, 120, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -159,7 +134,7 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_numero_depActionPerformed
 
-    Dueño d = new Dueño();
+   
 
     public void ingresarDueño() {
         
@@ -169,15 +144,12 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
             estado="true";
         }
             
-        
-
         String sql = "Insert into dueño (cedula,nombre,edad,sexo,n_departamento,estado)Values('" + txt_cedula.getText() + "','"
                 + txt_nombre.getText() + "'," + txt_edad.getText() + ",'" + txt_sexo.getText()
                 + "'," + txt_numero_dep.getText() + " ,'"+estado + "'); ";
 
         ConexionPG con = new ConexionPG();
-        
-        
+         
 
         if (con.accion(sql)) {
             JOptionPane.showMessageDialog(null, "Dueño registrado");
@@ -219,8 +191,6 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -228,8 +198,6 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JRadioButton rbtn_paga;
     private javax.swing.JRadioButton rbtn_pendiente;
     private javax.swing.JTextField txt_cedula;
