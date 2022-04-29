@@ -104,7 +104,7 @@ public class Login extends javax.swing.JFrame {
        int validar=validarLogin();
        
         if (validar!=0) {
-            Alicuota_Dueño ali=new Alicuota_Dueño();
+            Menu ali=new Menu();
             ali.setVisible(true);
             this.dispose();
         }

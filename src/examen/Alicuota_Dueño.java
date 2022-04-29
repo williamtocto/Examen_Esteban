@@ -109,7 +109,7 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
         });
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, 120, 30));
 
-        jButton2.setText("Reporte");
+        jButton2.setText("Regresar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -145,9 +145,10 @@ public class Alicuota_Dueño extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_numero_depActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Reporte r=new Reporte();
-        r.setVisible(true);
-        this.dispose();
+        Menu m = new Menu();
+        this.setVisible(false);
+        m.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     public void validar() {

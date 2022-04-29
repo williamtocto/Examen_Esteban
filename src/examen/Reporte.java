@@ -1,6 +1,4 @@
-
 package examen;
-
 
 import baseConexion.ConexionPG;
 import java.sql.ResultSet;
@@ -12,22 +10,24 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Dueño;
 
 
-/**
- *
- * @author willi
- */
-
 public class Reporte extends javax.swing.JFrame {
- List<Dueño> list = new ArrayList<>();
- 
-   ConexionPG conectar=new ConexionPG();
+
+    List<Dueño> list = new ArrayList<>();
+
+    ConexionPG conectar = new ConexionPG();
+
     public Reporte() {
         initComponents();
         list = mostrardatos();
         cargarLista(list);
     }
 
-   public List<Dueño> mostrardatos() {
+    Reporte(List<Dueño> lista) {
+      initComponents();
+        cargarLista(lista);
+    }
+
+    public List<Dueño> mostrardatos() {
         try {
             List<Dueño> lista = new ArrayList<Dueño>();
             String sql = "select * from dueño ";
@@ -39,12 +39,12 @@ public class Reporte extends javax.swing.JFrame {
                 m.setEdad(rs.getInt("edad"));
                 m.setSexo(rs.getString("sexo"));
                 m.setDepartamento(rs.getInt("n_departamento"));
-                if (rs.getBoolean("estado")==true) {
+                if (rs.getBoolean("estado") == true) {
                     m.setEstado(("pagado"));
-                }else {
-                     m.setEstado(("debe"));
+                } else {
+                    m.setEstado(("debe"));
                 }
-                
+
                 lista.add(m);
             }
             rs.close();
@@ -54,20 +54,20 @@ public class Reporte extends javax.swing.JFrame {
             return null;
         }
     }
-   
-   
-      public void cargarLista(List<Dueño> lista) {
-          System.out.println("aaaa");
+
+    public void cargarLista(List<Dueño> lista) {
+        System.out.println("aaaa");
         DefaultTableModel tblModel;
         tblModel = (DefaultTableModel) tabla.getModel();
         tblModel.setNumRows(0);
         //List<Dueño> lista = mostrardatos();
         lista.stream().forEach(r -> {
             String[] compu = {r.getCedula(), r.getNombre(), String.valueOf(r.getEdad()),
-                 r.getSexo(), String.valueOf(r.getDepartamento()), r.getEstado()};
+                r.getSexo(), String.valueOf(r.getDepartamento()), r.getEstado()};
             tblModel.addRow(compu);
         });
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -134,11 +134,11 @@ public class Reporte extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Menu m = new Menu();
-       this.setVisible(false);
-       m.setVisible(true);
+        Menu m = new Menu();
+        this.setVisible(false);
+        m.setVisible(true);
+         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
